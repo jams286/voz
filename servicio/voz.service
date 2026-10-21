@@ -1,0 +1,14 @@
+[Unit]
+Description=Dictado de la casa (Whisper, audio a texto)
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/proyectos/casa/voz
+ExecStart=%h/proyectos/casa/voz/.venv/bin/python servidor.py
+Restart=on-failure
+RestartSec=5
+# Que no le gane al resto del server mientras transcribe
+Nice=5
+
+[Install]
+WantedBy=default.target
